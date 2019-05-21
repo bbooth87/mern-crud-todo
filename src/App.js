@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import "materialize-css/dist/css/materialize.min.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import Create from "./components/create.component";
+import Edit from "./components/edit.component";
+import List from "./components/list.component";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div className="nav-extended">
+    <nav>
+  <div className="nav-wrapper purple">
+  <Link to="/" className="brand-logo center">MERN Crud Todo </Link>
+    <ul id="nav-mobile" className="left hide-on-med-and-down">
+      <li><Link to="/" className="nav-link">Todos</Link></li>
+      <li><Link to="/create" className="nav-link">Create Todo</Link></li>
+    </ul>
+  </div>
+</nav>
+<div className ="container">
+      <h2> Mern Crud</h2>
+      <Route path="/" exact component={List} />
+      <Route path="/edit/:id" component={Edit} />
+      <Route path="/create" component={Create} />
     </div>
+    </div>
+    </Router>
   );
 }
 
